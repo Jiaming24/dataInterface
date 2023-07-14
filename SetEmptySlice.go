@@ -1,4 +1,4 @@
-package LogicFunc
+package dataInterface
 
 import (
 	"fmt"
