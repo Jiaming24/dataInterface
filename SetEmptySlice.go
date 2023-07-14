@@ -23,13 +23,12 @@ func SetEmptySlice(Value reflect.Value) {
 		return
 	}
 	Value = Value.Elem()
-	fmt.Println(Value.Interface())
 	//fmt.Println(Value.Kind())
 
 	// 遍历结构体的字段
 	if Value.Kind() == reflect.Struct {
 		for i := 0; i < Value.NumField(); i++ {
-			if Value.Field(i).CanAddr(){
+			if Value.Field(i).CanAddr() {
 				SetEmptySlice(Value.Field(i).Addr())
 			}
 		}
@@ -67,6 +66,8 @@ func SetEmptySlice(Value reflect.Value) {
 	}
 
 	if Value.Kind() == reflect.Ptr {
-		SetEmptySlice(Value.Elem().Addr())
+		if Value.Elem().CanAddr() {
+			SetEmptySlice(Value.Elem().Addr())
+		}
 	}
 }
