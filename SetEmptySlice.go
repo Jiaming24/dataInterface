@@ -1,7 +1,6 @@
 package dataInterface
 
 import (
-	"fmt"
 	"reflect"
 )
 
@@ -23,7 +22,6 @@ func SetEmptySlice(Value reflect.Value) {
 		return
 	}
 	Value = Value.Elem()
-	//fmt.Println(Value.Kind())
 
 	// 遍历结构体的字段
 	if Value.Kind() == reflect.Struct {
